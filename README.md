@@ -6,4 +6,4 @@
 `int FIRST_CODE_ASCI = 179;` 
 `int LAST_CODE_ASCI = 223;`
 
-![Таблица ACSII символов ](https://www.intuit.ru/EDI/19_05_18_1/1526682091-19435/tutorial/358/objects/4/files/05_01.png "Таблица ACSII символов ")
+![Таблица ACSII символов ](https://bourabai.ru/alg/img/3.1.gif "Таблица ACSII символов ")

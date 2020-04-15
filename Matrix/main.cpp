@@ -1,36 +1,46 @@
 #include <iostream>
 #include <random>
 #include <ctime>
-#include "windows.h"
 #include <string>
+#include "options.h"
 
 using namespace std;
 
-const int STRING_SIZE = 100;		
-const int WHITESPACE_PERIOD = 10;	/* Input whitespace in string period*/
-int FIRST_CODE_ASCI = 179;			
-int LAST_CODE_ASCI = 223;			
-
 int main()
 {
-	system("color 2");
-	system("mode con cols=110 lines=30"); /* Console window size. 
-										  Width = (STRING_SIZE + WHITESPACE_PERIOD) symbols, height = ... lines */
+	SetConsoleTextAttribute(hConsole, (WORD)((Black << 4) | Green));
+	system("mode con cols=100 lines=30"); /* Console window size. Width = STRING_SIZE symbols, height = ... lines */
+	SetConsoleTitleA("Matrix");
 	srand(time(0));
 	int exit = false;
+
 	while (!exit)
 	{
 		for (int i = 0; i < STRING_SIZE; ++i)
 		{
-			if (i % WHITESPACE_PERIOD == 0)
+			if (i % WHITESPACE_PERIOD == 0 || rand() % 4 == 0)
 			{
 				cout << " ";
+				continue;
 			}
-			int value = FIRST_CODE_ASCI + rand() % (LAST_CODE_ASCI - FIRST_CODE_ASCI + 1);
-			cout << char(value);
+
+			if (rand() % 10 == 0)
+			{
+				SetConsoleTextAttribute(hConsole, (WORD)((0 << 4) | White));
+				printSymb();
+				SetConsoleTextAttribute(hConsole, (WORD)((Black << 4) | Green));
+				continue;
+			}
+			printSymb();
 		}
 		Sleep(100);
 		cout << endl;
 	}
 	return 0;
+}
+
+void printSymb()
+{
+	int value = FIRST_CODE_ASCII + rand() % (LAST_CODE_ASCII - FIRST_CODE_ASCII + 1);
+	cout << char(value);
 }

@@ -12,7 +12,7 @@ using namespace std;
 int main()
 {
 	SetConsoleTextAttribute(hConsole, (WORD)((Black << 4) | Green));
-	system("mode con cols=100 lines=30"); /* Console window size. Width = STRING_SIZE symbols, height = ... lines */
+	system("mode con cols=100 lines=40"); /* Console window size. Width = STRING_SIZE symbols, height = ... lines */
 	SetConsoleTitleA("Matrix");
 	srand(time(0));
 	int exit = false;
@@ -21,8 +21,13 @@ int main()
 	if (PlaySound("wav/fullTheme.wav", NULL, SND_FILENAME | SND_ASYNC))
 	{
 		speedPrint("PlaySound - init \n", 100);
+		speedPrint("Matrix ", 100);
+		speedPrint("...", 1000);
+		speedPrint(" loaded\n", 100);
+		speedPrint("...", 1000);
+		speedPrint("You are in matrix \n", 100);
 		speedPrint("Knock, knock User ", 100);
-		speedPrint("...\n", 1000);
+		speedPrint("..\n", 1000);
 	}
 	else
 		cout << "PlaySound - ERROR " << strerror(GetLastError()) << endl;

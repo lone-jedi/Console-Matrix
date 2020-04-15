@@ -1,5 +1,5 @@
 # "Матрица" в консоле Windows
-![Matrix](https://image.prntscr.com/image/74r5QSLXRueQ-BnhBhrncA.png "Matrix")
+![Matrix](https://image.prntscr.com/image/UqoahlVQSpCcvgbRd8TDbg.png "Matrix")
 
 В основе реализации лежит **вывод ACSII символов в консоль** c кодом от 179 до 223:
 

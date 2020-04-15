@@ -4,6 +4,9 @@
 #include <string>
 #include "options.h"
 
+#pragma comment (lib, "winmm.lib")
+#pragma warning(disable : 4996) // PlaySound() - old function
+
 using namespace std;
 
 int main()
@@ -14,6 +17,18 @@ int main()
 	srand(time(0));
 	int exit = false;
 
+	// Play main theme The Matrix, start title
+	if (PlaySound("wav/fullTheme.wav", NULL, SND_FILENAME | SND_ASYNC))
+	{
+		speedPrint("PlaySound - init \n", 100);
+		speedPrint("Knock, knock User ", 100);
+		speedPrint("...\n", 1000);
+	}
+	else
+		cout << "PlaySound - ERROR " << strerror(GetLastError()) << endl;
+
+
+	// Print Matrix
 	while (!exit)
 	{
 		for (int i = 0; i < STRING_SIZE; ++i)
@@ -38,6 +53,16 @@ int main()
 	}
 	return 0;
 }
+
+void speedPrint(string str, int speed)
+{
+	for (int i = 0; i < str.length(); ++i)
+	{
+		cout << str[i];
+		Sleep(speed);
+	}
+}
+
 
 void printSymb()
 {

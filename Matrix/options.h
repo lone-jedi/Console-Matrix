@@ -25,3 +25,4 @@ enum ConsoleColor {
 	White = 15
 };
 void printSymb();
+void speedPrint(std::string str, int speed); /* slow motion text function */

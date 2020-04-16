@@ -6,7 +6,6 @@ using namespace cmd;
 
 int main()
 {
-	
 	fixConsoleWindow();
 
 	/* !!! Console window size. Width = STRING_SIZE symbols, height = LINE_SIZE lines !!! */

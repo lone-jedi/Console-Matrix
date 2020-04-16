@@ -66,7 +66,7 @@ void cmd::lightningStruck(int step, LightningSide side)
 		printSymb(White);
 	}
 	/* Move cursor to left bottom position */
-	SetConsoleCursorPosition(hConsole, { 0, 29 });
+	SetConsoleCursorPosition(hConsole, { 0, LINE_SIZE - 1 });
 }
 
 

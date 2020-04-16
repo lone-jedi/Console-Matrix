@@ -26,20 +26,24 @@ void cmd::speedPrint(string str, int speed)
 }
 
 
-void cmd::printSymb(ConsoleColor color, int codeAcsii)
+void cmd::printSymb(ConsoleColor color, const int codeAcsii)
 {
 	int value;
 
 	if (codeAcsii == -1)
-		value = FIRST_CODE_ASCII + rand() % (LAST_CODE_ASCII - FIRST_CODE_ASCII + 1);
+	{
+		/* Random CODES_ACSII[] int pair */
+		const int randV = rand() % 4;
+		value = CODES_ACSII[randV][0] + rand() % (CODES_ACSII[randV][1] - CODES_ACSII[randV][0] + 1);
+	}
 	else
 		value = codeAcsii;
 
 	if (color != Green)
 	{
-		SetConsoleTextAttribute(hConsole, (WORD)((Black << 4) | color));
+		SetConsoleTextAttribute(H_CONSOLE, (WORD)((Black << 4) | color));
 		cout << char(value);
-		SetConsoleTextAttribute(hConsole, (WORD)((Black << 4) | Green));
+		SetConsoleTextAttribute(H_CONSOLE, (WORD)((Black << 4) | Green));
 	}
 	else
 		cout << char(value);
@@ -50,7 +54,7 @@ void cmd::gotoxy(int x, int y)
 	COORD coord;
 	coord.X = x;
 	coord.Y = y;
-	SetConsoleCursorPosition(hConsole, coord);
+	SetConsoleCursorPosition(H_CONSOLE, coord);
 }
 
 void cmd::lightningStruck(int step, LightningSide side)
@@ -61,12 +65,12 @@ void cmd::lightningStruck(int step, LightningSide side)
 	for (short i = rand() % (STRING_SIZE / 6); i < randXEnd; ++i)
 	{
 		/* XCoord = i, YCoord = [ -step ; +step] */
-		SetConsoleCursorPosition(hConsole, { i , middleYCmdSize + rand() % (short)step - (short)step });
+		SetConsoleCursorPosition(H_CONSOLE, { i , middleYCmdSize + rand() % (short)step - (short)step });
 		cout << "\b";
 		printSymb(White);
 	}
 	/* Move cursor to left bottom position */
-	SetConsoleCursorPosition(hConsole, { 0, LINE_SIZE - 1 });
+	SetConsoleCursorPosition(H_CONSOLE, { 0, LINE_SIZE - 1 });
 }
 
 

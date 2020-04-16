@@ -11,12 +11,21 @@ namespace cmd {
 	const int LINE_SIZE = 30;
 
 	const int WHITESPACE_PERIOD = 10;	/* Input whitespace in string period*/
-	const int FIRST_CODE_ASCII = 179;
-	const int LAST_CODE_ASCII = 223;
 
-	const LPCSTR consoleTitle = "Matrix";
-	const LPCSTR musicPath = "wav/fullTheme.wav";
-	const string introImgPath = "neoinv.txt";
+	/*
+	*	ACSII CODES:
+	*	(FIRST_CODE_ASCII - LAST_CODE_ASCII)
+	*	179 - 223 - symbols
+	*	33	- 38  - symbols
+	*	48  - 49  - 0, 1
+	*	242 - 254 - some obscure symbols
+	*	I think it's cool, actually.
+	*/
+	const int CODES_ACSII[][2] = { {179, 223}, {33, 38}, {48, 49}, {242, 254} };
+
+	const LPCSTR CONSOLE_TITLE = "Matrix";
+	const LPCSTR MUSIC_PATH = "wav/fullTheme.wav";
+	const string INTRO_IMG_PATH = "neoinv.txt";
 	enum ConsoleColor {
 		Black = 0,
 		Blue = 1,
@@ -37,9 +46,9 @@ namespace cmd {
 	};
 	enum LightningSide { Left, Right };
 
-	const HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	const HANDLE H_CONSOLE = GetStdHandle(STD_OUTPUT_HANDLE);
 
-	void printSymb(ConsoleColor color = Green, int codeAcsii = -1);
+	void printSymb(ConsoleColor color = Green, const int codeAcsii = -1);
 	void speedPrint(string str, int speed); /* slow motion text function */
 	void gotoxy(int x, int y);
 	void lightningStruck(int step, LightningSide side = Left);

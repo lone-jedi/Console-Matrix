@@ -12,15 +12,15 @@ int main()
 	system("mode con cols=100 lines=30");
 
 	/* Set console background and text color*/
-	SetConsoleTextAttribute(hConsole, (WORD)((Black << 4) | Green));
+	SetConsoleTextAttribute(H_CONSOLE, (WORD)((Black << 4) | Green));
 
 	/* Set console title */
-	SetConsoleTitleA(consoleTitle);
+	SetConsoleTitleA(CONSOLE_TITLE);
 
 	srand(time(0));
 
 	/* Play main theme The Matrix, intro */
-	if (PlaySound(musicPath, NULL, SND_LOOP | SND_FILENAME | SND_ASYNC))
+	if (PlaySound(MUSIC_PATH, NULL, SND_LOOP | SND_FILENAME | SND_ASYNC))
 		speedPrint("PlaySound - init \n", 100);
 	else
 		cout << "PlaySound - ERROR " << strerror(GetLastError()) << endl;
@@ -28,7 +28,7 @@ int main()
 	speedPrint("Matrix ", 100);
 	speedPrint("...", 500);
 	speedPrint(" loaded\n", 100);
-	printFile(introImgPath);
+	printFile(INTRO_IMG_PATH); /* Load ACSII art image */
 	speedPrint("...", 500);
 	speedPrint("You are in matrix \n", 100);
 	speedPrint("Knock, knock User", 100);

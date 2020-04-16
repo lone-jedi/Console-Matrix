@@ -18,9 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="cmd.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="options.h">
+    <ClInclude Include="cmd.h">
       <Filter>Исходные файлы</Filter>
     </ClInclude>
   </ItemGroup>

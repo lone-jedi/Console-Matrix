@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <random>
 #include <ctime>
 #include <string>
@@ -35,12 +36,14 @@ int main()
 	{
 		speedPrint("PlaySound - init \n", 100);
 		speedPrint("Matrix ", 100);
-		speedPrint("...", 1000);
+		speedPrint("...", 500);
 		speedPrint(" loaded\n", 100);
-		speedPrint("...", 1000);
+		readFile("neoinv.txt");
+		speedPrint("...", 500);
 		speedPrint("You are in matrix \n", 100);
-		speedPrint("Knock, knock User ", 100);
-		speedPrint("..\n", 1000); 
+		speedPrint("Knock, knock User", 100);
+		speedPrint(".\n\n", 500); 
+		
 	}
 	else
 		cout << "PlaySound - ERROR " << strerror(GetLastError()) << endl;
@@ -126,4 +129,23 @@ void lightningStruck(int step, LightningSide side)
 		printSymb(White);
 	}
 	SetConsoleCursorPosition(hConsole, { 0, 29 }); // Cursor to left bottom position 
+}
+
+
+void readFile(string path)
+{
+	string line;
+	ifstream myfile(path);
+	if (myfile.is_open())
+	{
+		while (!myfile.eof())
+		{
+			getline(myfile, line);
+			cout << '\t' << line << endl;
+			Sleep(70);
+		}
+		myfile.close();
+	}
+
+	else cout << "Unable to open file";
 }

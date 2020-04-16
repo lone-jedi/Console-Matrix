@@ -31,3 +31,4 @@ void printSymb(ConsoleColor color = Green, int codeAcsii = -1);
 void speedPrint(std::string str, int speed); /* slow motion text function */
 void gotoxy(int x, int y);
 void lightningStruck(int step, LightningSide side = Left);
+void readFile(std::string path);

@@ -1,8 +1,8 @@
 #include <ctime>
 #include "cmd.h"
 using namespace cmd;
-#pragma comment (lib, "winmm.lib") // For PlaySound()
-#pragma warning(disable : 4996) // PlaySound() - old function
+#pragma comment (lib, "winmm.lib") /* For PlaySound() */
+#pragma warning(disable : 4996) /* PlaySound() - old function */
 
 int main()
 {
@@ -37,14 +37,14 @@ int main()
 	/* Print Matrix */
 	for(int j = 1; ; ++j)
 	{
+		if (j == LINE_SIZE)
+		{
+			lightningStruck(3 + rand() % 6);
+			j = 1;
+		}
+
 		for (int i = 0; i < STRING_SIZE; ++i)
 		{
-			if (j == LINE_SIZE)
-			{
-				lightningStruck(3 + rand() % 6);
-				j = 1;
-			}
-
 			if (i % WHITESPACE_PERIOD == 0 || rand() % 4 == 0)
 			{
 				cout << " ";
